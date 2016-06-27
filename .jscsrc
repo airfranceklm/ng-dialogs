@@ -1,0 +1,9 @@
+{
+    "preset": "google",
+    "validateIndentation": 4,
+    "maximumLineLength": {
+        "value": 120,
+        "allExcept": ["comments", "regex"]
+    },
+    "disallowMultipleVarDecl": false
+}
