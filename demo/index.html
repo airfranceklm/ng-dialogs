@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+
+    <script src="dist/ng-dialogs.js"></script>
+    <link rel="stylesheet" href="dist/ng-dialogs.css" />
+
+    <script src="main.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+    <button ng-click="create()">create dialog</button>
+    <button ng-click="destroy()">destroy dialog</button>
+    <button ng-click="show()">show dialog</button>
+    <button ng-click="hide()">hide dialog</button>
+</body>
+</html>
