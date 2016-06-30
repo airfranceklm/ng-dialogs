@@ -101,3 +101,9 @@ Just file one feedback at: https://github.com/afklm/ng-dialogs/issues
 * messagebox
 * dropover
 * tooltip
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2016 KLM Royal Dutch Airlines

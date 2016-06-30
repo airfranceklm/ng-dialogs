@@ -144,7 +144,7 @@ function ngDialogsCoreService($rootScope, $q, $document, $compile, $controller, 
         }
 
         function _constructDialog(dialogScope, options, template) {
-            var container = $document.find('body');
+            var parent = $document.find('body');
 
             var dialogHtml = [options.templateBefore, template, options.templateAfter].join('');    //wrap template dialog html
             var dialogElementTemplate = angular.element(dialogHtml);
@@ -197,8 +197,8 @@ function ngDialogsCoreService($rootScope, $q, $document, $compile, $controller, 
                 }
             }
 
-            // append dialog to container
-            container.append(dialogElement);
+            // append dialog to parent element
+            parent.append(dialogElement);
         }
 
     }

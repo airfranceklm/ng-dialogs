@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <title>Document</title>
 
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-animate/angular-animate.js"></script>
 
@@ -13,9 +22,34 @@
     <script src="main.js"></script>
 </head>
 <body ng-controller="MainCtrl">
-    <button ng-click="create()">create dialog</button>
-    <button ng-click="destroy()">destroy dialog</button>
-    <button ng-click="show()">show dialog</button>
-    <button ng-click="hide()">hide dialog</button>
+    <fieldset>
+        <legend>Core Dialog</legend>
+        <div>
+            <button ng-click="core.create()">create dialog</button>
+            <button ng-click="core.hide()">hide dialog</button>
+            <button ng-click="core.show()">show dialog</button>
+            <button ng-click="core.destroy()">destroy dialog</button>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Modal Dialog</legend>
+        <div>
+            <button ng-click="modal.create()">create modal dialog</button>
+            <button ng-click="modal.hide()">hide modal dialog</button>
+            <button ng-click="modal.show()">show modal dialog</button>
+            <button ng-click="modal.destroy()">destroy modal dialog</button>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Modeless Dialog</legend>
+        <div>
+            <button ng-click="modeless.create()">create modeless dialog</button>
+            <button ng-click="modeless.hide()">hide modeless dialog</button>
+            <button ng-click="modeless.show()">show modeless dialog</button>
+            <button ng-click="modeless.destroy()">destroy modeless dialog</button>
+        </div>
+    </fieldset>
 </body>
 </html>

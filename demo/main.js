@@ -1,15 +1,20 @@
 var app = angular.module('exampleApp', ['ngAnimate', 'ng-dialogs']);
 
-app.controller('MainCtrl', function($scope, ngDialogsCoreService) {
+app.controller('MainCtrl', function($scope, ngDialogsCoreService, ngDialogsModalService) {
 
-    var dialog;
 
-    $scope.create = function() {
-        if (dialog) {
-            dialog.destroy();
+    /**
+     * Core Dialog
+     */
+    var coreDialog;
+
+    $scope.core = {};
+    $scope.core.create = function() {
+        if (coreDialog) {
+            coreDialog.destroy();
         }
 
-        dialog = ngDialogsCoreService.createDialog({
+        coreDialog = ngDialogsCoreService.createDialog({
             // template: '<h2>hello dialog template<button ng-click="dialog.foobar()">foobar</button><button ng-click="$dialog.destroy()">destroy</button></h2>',
             templateUrl: 'dialog.template.html',
             cssClass: 'ng-dialogs-fx--slidein',
@@ -38,25 +43,72 @@ app.controller('MainCtrl', function($scope, ngDialogsCoreService) {
             controllerAs: 'dialog'
         });
 
-        dialog.show();
+        coreDialog.show();
     };
 
-    $scope.destroy = function() {
-        dialog.destroy().then(function() {
+    $scope.core.destroy = function() {
+        coreDialog.destroy().then(function() {
             console.log('Promise: "Dialog destroyed..."');
         });
-        dialog = undefined;
+        coreDialog = undefined;
     };
 
-    $scope.show = function() {
-        dialog.show().then(function() {
+    $scope.core.show = function() {
+        coreDialog.show().then(function() {
             console.log('Promise: "Dialog showed..."');
         });
     };
 
-    $scope.hide = function() {
-        dialog.hide().then(function() {
+    $scope.core.hide = function() {
+        coreDialog.hide().then(function() {
             console.log('Promise: "Dialog hidden..."');
         });
     };
+
+
+    /**
+     * Modal Dialog
+     */
+    var modalDialog;
+
+    $scope.modal = {};
+    $scope.modal.create = function() {
+        if (modalDialog) {
+            modalDialog.destroy();
+        }
+
+        modalDialog = ngDialogsModalService.createDialog({
+            template: 'Hello modal!'
+        });
+
+        modalDialog.show();
+    };
+
+    $scope.modal.show = function() {modalDialog.show();};
+    $scope.modal.hide = function() {modalDialog.hide();};
+    $scope.modal.destroy = function() {modalDialog.destroy();};
+
+    /**
+     * Modeless Dialog
+     */
+    var modelessDialog;
+
+    $scope.modeless = {};
+    $scope.modeless.create = function() {
+        if (modelessDialog) {
+            modelessDialog.destroy();
+        }
+
+        modelessDialog = ngDialogsModalService.createDialog({
+            template: 'Hello modeless!',
+            modeless: true
+        });
+
+        modelessDialog.show();
+    };
+
+    $scope.modeless.show = function() {modelessDialog.show();};
+    $scope.modeless.hide = function() {modelessDialog.hide();};
+    $scope.modeless.destroy = function() {modelessDialog.destroy();};
+
 });

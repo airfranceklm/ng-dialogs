@@ -13,20 +13,23 @@ gulp.task('clean', function() {
 
 gulp.task('compile:js', function() {
     gulp.src('./src/*.js')
-        // .pipe($.sourcemaps.init())
+        .pipe($.sourcemaps.init())
             .pipe($.rollup({
                 entry: './src/ng-dialogs.js',
                 format: 'umd'
             }))
             .pipe($.ngAnnotate())
-        // .pipe($.sourcemaps.write('./'))
+            .pipe(gulp.dest('./dist'))
+            .pipe($.uglify())
+            .pipe($.rename({suffix: '.min'}))
+        .pipe($.sourcemaps.write('./'))
         .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('compile:css', function() {
     gulp.src('./src/*.scss')
         // .pipe($.sourcemaps.init())
-            .pipe($.sass({outputStyle: 'expanded'}))
+            .pipe($.sass({indentWidth: 4, outputStyle: 'expanded'}))
         // .pipe($.sourcemaps.write('./'))
         .pipe(gulp.dest('./dist'))
         .pipe(browserSync.stream());

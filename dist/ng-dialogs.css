@@ -1,0 +1,46 @@
+[class^=ng-dialogs] {
+    font-family: sans-serif;
+}
+
+.ng-dialogs-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ng-dialogs-modal__backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.ng-dialogs-modal__content {
+    z-index: 0;
+    box-sizing: border-box;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: auto;
+    background: #fff;
+}
+
+.ng-dialogs-modeless {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: auto;
+    background: #fff;
+}
