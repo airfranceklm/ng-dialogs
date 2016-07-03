@@ -50,7 +50,7 @@ describe('ng-dialogs-modal.service', function() {
                     var el = $document[0].getElementById('custom-dialog-id');
                     expect(el.classList.contains('ng-dialogs-modal')).toBe(true);
                     expect(el.querySelector('ng-dialogs-modal__backdrop')).toBeDefined();
-                    expect(el.querySelector('ng-dialogs-modal__content')).toBeDefined();
+                    expect(el.querySelector('ng-dialogs-modal__frame')).toBeDefined();
                     done();
                 });
             });

@@ -15,8 +15,9 @@ app.controller('MainCtrl', function($scope, ngDialogsCoreService, ngDialogsModal
         }
 
         coreDialog = ngDialogsCoreService.createDialog({
-            // template: '<h2>hello dialog template<button ng-click="dialog.foobar()">foobar</button><button ng-click="$dialog.destroy()">destroy</button></h2>',
-            templateUrl: 'dialog.template.html',
+            parent: '#core-dialog-container',
+            template: '<h2>hello dialog template<button ng-click="dialog.foobar()">foobar</button><button ng-click="$dialog.destroy()">destroy</button></h2>',
+            // templateUrl: 'dialog.template.html',
             cssClass: 'ng-dialogs-fx--slidein',
             plugins: [
                 function(scope, element, dialog) {
@@ -78,10 +79,10 @@ app.controller('MainCtrl', function($scope, ngDialogsCoreService, ngDialogsModal
         }
 
         modalDialog = ngDialogsModalService.createDialog({
-            template: 'Hello modal!'
+            template: 'Hello modal!<button>x</button><button>y</button><button>z</button>',
+            autoShow: true,
+            backdropClose: false
         });
-
-        modalDialog.show();
     };
 
     $scope.modal.show = function() {modalDialog.show();};
@@ -101,10 +102,9 @@ app.controller('MainCtrl', function($scope, ngDialogsCoreService, ngDialogsModal
 
         modelessDialog = ngDialogsModalService.createDialog({
             template: 'Hello modeless!',
-            modeless: true
+            modeless: true,
+            autoShow: true
         });
-
-        modelessDialog.show();
     };
 
     $scope.modeless.show = function() {modelessDialog.show();};

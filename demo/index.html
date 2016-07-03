@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"/>
     <style>
         html, body {
             width: 100%;
@@ -11,18 +12,45 @@
             margin: 0;
             padding: 0;
         }
+        body {
+            /* https://freeios7.com/wallpaper-ocean-green-sky-blur/ */
+            background-color: #f5f9fa;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAPACAIAAAB7K4RSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUJEMzJEMzkzRUYwMTFFNkFDMkVERTA0MEI4NjE0RTMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUJEMzJEMzgzRUYwMTFFNkFDMkVERTA0MEI4NjE0RTMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IkM1MkM0MDFFRTRBRTA0NURDN0JGQzg1M0Q5NTUxOTg3IiBzdFJlZjpkb2N1bWVudElEPSJDNTJDNDAxRUU0QUUwNDVEQzdCRkM4NTNEOTU1MTk4NyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pgn6FBQAAAFJSURBVHja7JbpaoQwFIVvpO//eC0ttKWFbuOuUaNoUr1ZZpKmBlpkBsYfHzHn3C0YQWj6Adao+/6qKYednZ1zUfTsoslZtynZxqQd27kiMtY7rN+P/97fs3+jbNiUirGLJvR/Q9n21PO981G13a+epuw6i6Jtf5A3jZeMUkhoa4jrBg60ga+aWnxWteGjrAzvRQlvpeS1KJCXPEee8wx5yiSPaYo8JAlyH8fIXZzA7SGOBEAkhDBwIvezLDXi+LMBM5Pgli50vGJUcXo/wdHT+cvKlc4nMHFax3xOZD3Tj6A+ilHVd3wOVt1jf5nHuYzjQjjnIna8mvO4B2v+ZV48B7h19Nwyfumn6+gVZyCRpZ0i5wSvp/yb6STWzfXlu88k4Ps8SxOR1zPrmqfe65q/mjuvJOCHahDV/y+9Q7EID/gQeWuo528BBgBYpMYkjzUeFwAAAABJRU5ErkJggg==");
+            background-position: left bottom;
+            background-repeat: repeat-x;
+        }
+
+        .github-ribbon {
+            display: inline-block;
+            background-color: #0da6e0;
+            color: #fff;
+            font-size: 13px;
+            text-decoration: none;
+            text-shadow: 0 0 1px rgba(0,0,0,.4);
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            padding: 8px 60px;
+            transform: rotate(-45deg) translate(70px, 5px);
+            width: 110px;
+        }
+        .github-ribbon, .github-ribbon:hover, .github-ribbon:focus {
+            outline: 1px dashed rgba(255,255,255,.9);
+            outline-offset: -3px;
+        }
+
     </style>
 
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-animate/angular-animate.js"></script>
 
     <script src="dist/ng-dialogs.js"></script>
-    <link rel="stylesheet" href="dist/ng-dialogs.css" />
+    <link rel="stylesheet" href="dist/ng-dialogs-theme--basic.css" />
 
     <script src="main.js"></script>
 </head>
 <body ng-controller="MainCtrl">
-    <fieldset>
+    <fieldset id="core-dialog-container">
         <legend>Core Dialog</legend>
         <div>
             <button ng-click="core.create()">create dialog</button>
@@ -51,5 +79,7 @@
             <button ng-click="modeless.destroy()">destroy modeless dialog</button>
         </div>
     </fieldset>
+
+    <a href="https://github.com/afklm/ng-dialogs" class="github-ribbon" target="_blank">Fork me on GitHub</a>
 </body>
 </html>

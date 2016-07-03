@@ -1,8 +1,4 @@
-[class^=ng-dialogs] {
-    font-family: sans-serif;
-}
-
-.ng-dialogs-modal {
+.ng-dialogs-theme--basic.ng-dialogs-modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -13,16 +9,16 @@
     justify-content: center;
 }
 
-.ng-dialogs-modal__backdrop {
+.ng-dialogs-theme--basic.ng-dialogs-modal .ng-dialogs-modal__backdrop {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(33, 33, 33, 0.33);
 }
 
-.ng-dialogs-modal__content {
+.ng-dialogs-theme--basic.ng-dialogs-modal .ng-dialogs-modal__frame {
     z-index: 0;
     box-sizing: border-box;
     max-width: 90vw;
@@ -32,7 +28,7 @@
     background: #fff;
 }
 
-.ng-dialogs-modeless {
+.ng-dialogs-theme--basic.ng-dialogs-modeless {
     position: fixed;
     top: 50%;
     left: 50%;

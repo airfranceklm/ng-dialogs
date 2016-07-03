@@ -13,26 +13,47 @@ function ngDialogsModalService(ngDialogsCoreService, ngDialogsCorePluginsService
     function createDialog(config) {
 
         var modalOptions = {
+            cssClass: 'ng-dialogs-theme--basic',
             templateBefore: '<div class="ng-dialogs-modal" ng-show="$dialog.visible">' +
                                 '<div class="ng-dialogs-modal__backdrop"></div>' +
-                                '<div class="ng-dialogs-modal__content">',
+                                '<div class="ng-dialogs-modal__frame">',
             templateAfter:      '</div>' +
                             '</div>',
-            focus: true,
-            focusSelector: '.ng-dialogs-modal__content'
+            autoShow: true,
+            frame: '.ng-dialogs-modal__frame',
+            focus: '.ng-dialogs-modal__frame',
+            focusTrap: true,
+            escapeClose: true,
+            outsideClose: true,
+            backdropClose: true,
+            aria: {
+                'role': 'dialog',
+                // 'aria-labelledby': '.ng-dialogs-modal__frame',
+                'aria-describedby': '.ng-dialogs-modal__frame'
+            }
         };
 
         var modelessOptions = {
-            templateBefore: '<div class="ng-dialogs-modeless" ng-show="$dialog.visible">',
+            cssClass: 'ng-dialogs-theme--basic',
+            templateBefore: '<div class="ng-dialogs-modeless ng-dialogs-modeless__frame" ng-show="$dialog.visible">',
             templateAfter: '</div>',
-            focus: true
+            autoShow: true,
+            focus: true,
+            frame: '.ng-dialogs-modeless__frame',
+            escapeClose: true,
+            outsideClose: true,
+            backdropClose: false,
+            // aria: {
+            //     'role': 'tooltip'
+            // }
         };
 
         var dialogOptions = (config.modeless === true) ? modelessOptions : modalOptions;
 
         var options = angular.extend({}, dialogOptions, config);
 
-        var modalPlugins = [
+        var plugins = [
+            ngDialogsCorePluginsService.autoShow,
             ngDialogsCorePluginsService.backdropEvent,
             ngDialogsCorePluginsService.backdropDestroy,
             ngDialogsCorePluginsService.outsideEvent,
@@ -41,9 +62,11 @@ function ngDialogsModalService(ngDialogsCoreService, ngDialogsCorePluginsService
             ngDialogsCorePluginsService.escapeDestroy,
             ngDialogsCorePluginsService.dialogFocus,
             ngDialogsCorePluginsService.restoreFocus,
+            ngDialogsCorePluginsService.focusTrap,
+            ngDialogsCorePluginsService.aria,
         ];
 
-        options.plugins = modalPlugins;
+        options.plugins = plugins;
 
         // Additional user plugins
         if (config.plugins) {

@@ -39,6 +39,7 @@ function ngDialogsCoreService($rootScope, $q, $document, $compile, $controller, 
 
         // default config
         var defaults = {
+            parent: undefined,
             id: undefined,
             cssClass: undefined,
             template: '',
@@ -144,8 +145,6 @@ function ngDialogsCoreService($rootScope, $q, $document, $compile, $controller, 
         }
 
         function _constructDialog(dialogScope, options, template) {
-            var parent = $document.find('body');
-
             var dialogHtml = [options.templateBefore, template, options.templateAfter].join('');    //wrap template dialog html
             var dialogElementTemplate = angular.element(dialogHtml);
 
@@ -197,8 +196,22 @@ function ngDialogsCoreService($rootScope, $q, $document, $compile, $controller, 
                 }
             }
 
+            var parent = _getParentElement(options);
+
             // append dialog to parent element
             parent.append(dialogElement);
+        }
+
+        function _getParentElement(options) {
+            if (angular.isElement(options.parent)) {
+                return angular.element(options.parent);
+            }
+
+            if (options.parent && angular.isString(options.parent)) {
+                return angular.element($document[0].querySelector(options.parent));
+            }
+
+            return $document.find('body');
         }
 
     }

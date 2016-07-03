@@ -1,0 +1,57 @@
+.ng-dialogs-theme--basic {
+
+    &.ng-dialogs-modal {
+
+        // stretch modal over whole screen
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        // center
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .ng-dialogs-modal__backdrop {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            background: rgba(33, 33, 33, .33);
+        }
+
+        .ng-dialogs-modal__frame {
+            z-index: 0;
+
+            // contain to viewport
+            box-sizing: border-box;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            overflow-x: auto;
+
+            background: #fff;
+        }
+    }
+
+    &.ng-dialogs-modeless {
+        // center
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        // contain to viewport
+        box-sizing: border-box;
+        max-width: 90vw;
+        max-height: 90vh;
+        overflow-y: auto;
+        overflow-x: auto;
+
+        background: #fff;
+    }
+}
